@@ -40,6 +40,5 @@ const wxRequest = async (params = {}, url, method,) => {
 module.exports = {
     wxRequest,
     baseUrl,
-    testbaseUrl,
     uploadImg,
 };

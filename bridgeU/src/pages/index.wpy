@@ -14,7 +14,6 @@
 <script>
 import wepy from 'wepy'
 import commonMixin from '@/mixins/common'
-import reqMixin from '@/mixins/req' 
 import api from '@/utils/api'
 import configData from '@/utils/configData'
 import broadcast from '@/utils/broadcast'
@@ -25,7 +24,7 @@ export default class Index extends wepy.page {
 
     components = {} 
 
-    mixins = [commonMixin, reqMixin]
+    mixins = [commonMixin]
     data = {
 
     }

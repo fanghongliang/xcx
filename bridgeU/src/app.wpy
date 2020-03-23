@@ -26,13 +26,13 @@ export default class extends wepy.app {
 			navigationBarTitleText: '伊道桥',
 			navigationBarTextStyle: 'black'
 		},
-		tabBar: {
-			"color": '#636b6b',
-			"selectedColor": '#FA4D47',
-			"borderStyle": 'black',
-			"backgroundColor": '#fff',
-			'list': [{}]
-		}
+		// tabBar: {
+		// 	"color": '#636b6b',
+		// 	"selectedColor": '#FA4D47',
+		// 	"borderStyle": 'black',
+		// 	"backgroundColor": '#fff',
+		// 	// 'list': [{}]
+		// }
 	}
 
 	globalData = {}
