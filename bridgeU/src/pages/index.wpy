@@ -1,0 +1,48 @@
+<style lang="less" scoped>
+
+</style>
+
+<template>
+    
+</template>
+
+<script>
+import wepy from 'wepy'
+import commonMixin from '@/mixins/common'
+import reqMixin from '@/mixins/req' 
+import api from '@/utils/api'
+import configData from '@/utils/configData'
+import broadcast from '@/utils/broadcast'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '伊道桥'
+    }
+
+    components = {} 
+
+    mixins = [commonMixin, reqMixin]
+    data = {
+
+    }
+
+    computed = {}
+
+    onLoad() {
+
+    }
+
+    onShow() {
+
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+    //funtions
+}
+</script>
