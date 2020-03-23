@@ -1,5 +1,5 @@
 {
-	"description": "bridge for U",
+	"description": "bridge for U By fanghl",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
@@ -8,9 +8,9 @@
 	},
 	"compileType": "miniprogram",
 	"appid": "wxc5cfc90347a82cfb",
-	"projectname": "y",
+	"projectname": "bridge",
 	"miniprogramRoot": "dist/",
-	"simulatorType": "wechat",
+	"simulatorType": "伊道桥",
 	"simulatorPluginLibVersion": {},
 	"condition": {}
 }
