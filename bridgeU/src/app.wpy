@@ -19,17 +19,25 @@ export default class extends wepy.app {
 		pages: [
 			'pages/index'
 		],
+		subPackages: [],
 		window: {
 			backgroundTextStyle: 'light',
 			navigationBarBackgroundColor: '#fff',
 			navigationBarTitleText: '伊道桥',
 			navigationBarTextStyle: 'black'
+		},
+		tabBar: {
+			"color": '#636b6b',
+			"selectedColor": '#FA4D47',
+			"borderStyle": 'black',
+			"backgroundColor": '#fff',
+			'list': [{}]
 		}
 	}
 
-	globalData = {
-		
-	}
+	globalData = {}
+
+	data = {}
 
 	constructor () {
 		super()
@@ -46,7 +54,7 @@ export default class extends wepy.app {
 	}
 
 	onHide() {
-		
+
 	}
 }
 </script>

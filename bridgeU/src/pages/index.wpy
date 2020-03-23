@@ -1,9 +1,14 @@
 <style lang="less" scoped>
-
+.indexPage {
+    position: relative;
+    width: 100vw;
+}
 </style>
 
 <template>
-    
+    <view class="indexPage">
+        <text>hello</text>
+    </view>
 </template>
 
 <script>
