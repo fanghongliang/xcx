@@ -10,7 +10,7 @@
 	"appid": "wxc5cfc90347a82cfb",
 	"projectname": "bridge",
 	"miniprogramRoot": "dist/",
-	"simulatorType": "伊道桥",
+	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {}
 }
