@@ -1,0 +1,52 @@
+<style lang="less" scoped>
+.indexPage {
+    position: relative;
+    width: 100vw;
+}
+</style>
+
+<template>
+    <view class="indexPage">
+        <text>hello2</text>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import commonMixin from '@/mixins/common'
+import api from '@/utils/api'
+import configData from '@/utils/configData'
+import broadcast from '@/utils/broadcast'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '伊道桥'
+    }
+
+    components = {} 
+
+    mixins = [commonMixin]
+    data = {
+
+    }
+
+    computed = {}
+
+    onLoad() {
+
+    }
+
+    onShow() {
+
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+    //funtions
+}
+</script>

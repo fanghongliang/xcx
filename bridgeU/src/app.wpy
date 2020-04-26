@@ -17,7 +17,10 @@ import 'wepy-async-function'
 export default class extends wepy.app {
 	config = {
 		pages: [
-			'pages/index'
+			'pages/index',
+			'pages/circle',
+			'pages/msgList',
+			'pages/my',
 		],
 		subPackages: [],
 		window: {
@@ -26,13 +29,38 @@ export default class extends wepy.app {
 			navigationBarTitleText: '伊道桥',
 			navigationBarTextStyle: 'black'
 		},
-		// tabBar: {
-		// 	"color": '#636b6b',
-		// 	"selectedColor": '#FA4D47',
-		// 	"borderStyle": 'black',
-		// 	"backgroundColor": '#fff',
-		// 	// 'list': [{}]
-		// }
+		tabBar: {
+			"color": '#636b6b',
+			"selectedColor": '#FA4D47',
+			"borderStyle": 'black',
+			"backgroundColor": '#fff',
+			'list': [
+				{
+                "text": '遇见',
+                "pagePath": "pages/index",
+                "iconPath": "images/tab/icon_encounterNo.png",
+                "selectedIconPath": "images/tab/icon_encounter.png"
+            },
+            {
+                "text": '圈子',
+                "pagePath": "pages/circle",
+                "iconPath": "images/tab/icon_circleNo.png",
+                "selectedIconPath": "images/tab/icon_circle.png"
+            },
+            {
+                "text": '消息',
+                "pagePath": "pages/msgList",
+                "iconPath": "images/tab/icon_msgNo.png",
+                "selectedIconPath": "images/tab/icon_msg.png"
+            },
+            {
+                "text": '我的',
+                "pagePath": "pages/my",
+                "iconPath": "/images/tab/icon_mineNo.png",
+                "selectedIconPath": "images/tab/icon_mine.png"
+            },
+			]
+		}
 	}
 
 	globalData = {}
