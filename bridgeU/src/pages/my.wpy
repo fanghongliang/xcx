@@ -1,12 +1,12 @@
 <style lang="less" scoped>
-.indexPage {
+.myPage {
     position: relative;
     width: 100vw;
 }
 </style>
 
 <template>
-    <view class="indexPage">
+    <view class="myPage">
         <text>hello4</text>
     </view>
 </template>
@@ -19,7 +19,7 @@ import configData from '@/utils/configData'
 import broadcast from '@/utils/broadcast'
 export default class Index extends wepy.page {
     config = {
-        navigationBarTitleText: '伊道桥'
+        navigationBarTitleText: '我的'
     }
 
     components = {} 
