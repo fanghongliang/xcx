@@ -1,0 +1,63 @@
+<style lang="less" scoped>
+@bgToast   : rgba(0, 0, 0, 0.4);
+@bgContent : rgba(255,255,255,1);
+.NoticeTypeBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    background: @bgToast;
+    .ntb-content {
+        position: relative;
+        width: 388rpx;
+        margin: 300rpx auto 0;
+        border-radius: 24rpx;
+        text-align: center;
+        .ntb-noticeItem {
+            margin-bottom: 10rpx;
+            border-radius: 10rpx;
+            line-height: 98rpx;
+            color: white;
+            background: grey;
+        }
+        .ntb-selected {
+            background: red;
+        }
+    }
+}
+</style>
+
+
+<template>
+    <view class="NoticeTypeBox" catchtouchmove="preventTouchMove">
+        <view class="ntb-content">
+            <repeat for="{{noticeList}}" key="*this" item="item">
+                <view class="ntb-noticeItem" data-notice_id="{{item.noticeId}}" @tap="handleClick">{{item.name}}</view>
+            </repeat>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class NoticeType extends wepy.component{
+    props ={}
+    data = {
+        noticeList: [
+            {noticeId: 1, name: '红事'},
+            {noticeId: 2, name: '白事'},
+            {noticeId: 3, name: '寻物'},
+            {noticeId: 4, name: '其他'},
+        ]
+    }
+    methods = { 
+        preventTouchMove() {},
+        handleClick(e) {
+            const noticeId = e.currentTarget.dataset.notice_id
+            this.$emit('selectedNoticeId', noticeId) 
+        }
+    }
+}
+</script>
