@@ -1,0 +1,78 @@
+<style lang="less" scoped>
+.NoticeContnetBox {
+    padding: 150rpx 32rpx 0;
+    text {
+        display: block; 
+        margin-top: 30rpx;
+    }
+    
+    @keyframes hiddenShake{
+        40% {opacity: 1; top: 0}
+        60% {opacity: 1; top: 200rpx;}
+        100% {opacity: 0; top: 600rpx;}
+    }
+    .surfaceImg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        animation: hiddenShake 5s linear;
+        -webkit-animation: hiddenShake 5s linear;
+        animation-fill-mode: forwards;
+    }
+    .bgImg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+    .title {
+        font-size: 40rpx;
+        font-weight: bold;
+        color: #F5C170;
+    }
+    .content {
+        margin-top: 60rpx;
+        font-weight: 500;
+    }
+    .honorific {
+        font-weight: bold;
+        line-height: 60rpx;
+    }
+    .inviter {
+        margin-left: 440rpx;
+    }
+    .date {
+        margin-left: 440rpx;
+    }
+}
+</style>
+
+<template>
+    <view class="NoticeContnetBox">
+        <image class="surfaceImg" src="../images/index/cardSurface.jpg"/>
+        <image class="bgImg" src="../images/index/cardBg.jpg" />
+        <view class="sss">
+
+        
+            <text class="title">某某先生(女士、小姐):</text>
+            <text class="content">我们定于××月××日下午×时假座××饭店××厅举行婚宴</text>
+            <text class="honorific">恭请\n光临</text>
+            <text class="inviter">张三谨邀</text>
+            <text class="date">2020-05-13</text>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class noticeContent extends wepy.component {
+    props = {
+        noticeData: {}
+    }
+}
+</script>
