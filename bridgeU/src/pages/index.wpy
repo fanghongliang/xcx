@@ -1,13 +1,27 @@
 <style lang="less" scoped>
 .indexPage {
     position: relative;
-    width: 100vw;
+    .content {
+        height: 100vh;
+        .weddingsImg {
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 </style>
 
 <template>
     <view class="indexPage">
-        <text>hello</text>
+        <block wx:if="{{showNoticeType}}">
+            <NoticeType></NoticeType>
+            <view class="content">
+                <image src="../images/index/weddingsBg.jpg" class="weddingsImg"/>
+            </view>
+        </block>
+        <block wx:if="{{showNoticeCont}}">
+            <NoticeOption></NoticeOption>
+        </block>
     </view>
 </template>
 
@@ -16,17 +30,28 @@ import wepy from 'wepy'
 import commonMixin from '@/mixins/common'
 import api from '@/utils/api'
 import configData from '@/utils/configData'
-import broadcast from '@/utils/broadcast'
+import broadcast from '@/utils/broadcast'  
+import NoticeType from '@/components/noticeType'  
+import NoticeOption from '@/components/noticeOption'
+import NoticeContent from '@/components/noticeContent'
+
 export default class Index extends wepy.page {
     config = {
-        navigationBarTitleText: '伊道桥'
+        navigationBarTitleText: '张榜'
     }
 
-    components = {} 
+    components = {
+        NoticeType,
+        NoticeOption,
+        NoticeContent,
+    } 
 
     mixins = [commonMixin]
     data = {
-
+        showNoticeType: true,
+        showNoticeCont: false,
+        noticeId: '',
+        noticeData: '',
     }
 
     computed = {}
@@ -44,7 +69,15 @@ export default class Index extends wepy.page {
     }
 
     events = {
-
+        selectedNoticeId(id) {
+            this.showNoticeType = false
+            this.showNoticeCont = true
+            this.noticeId = id
+        },
+        userInputData(data) {
+            this.noticeData = data
+            this.nav('/pages/card')
+        }   
     }
 
     //funtions
