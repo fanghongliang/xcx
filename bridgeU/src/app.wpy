@@ -18,8 +18,7 @@ export default class extends wepy.app {
 	config = {
 		pages: [
 			'pages/index',
-			'pages/circle',
-			'pages/msgList',
+			'pages/card',
 			'pages/my',
 		],
 		subPackages: [],
