@@ -1,0 +1,106 @@
+<style lang="less" scoped>
+.noticeTempBox {
+    position: relative;
+    .receiver {
+        display: block;
+        padding: 5rpx 15rpx;
+    }
+    .inputReceiver {
+        width: 450rpx;
+        padding: 5rpx 15rpx;
+    }
+    .inputBox{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 120rpx;
+        background:rgba(248,248,248,1);
+        box-shadow: 0 -2rpx 6rpx rgba(0,0,0,0.05);
+        .inputContent{
+            width: 500rpx;
+            height: 80rpx;
+            padding-left: 20rpx;
+            font-size: 28rpx;
+            background:rgba(255,255,255,1);
+            color:rgba(18,18,18,1);
+            margin-right: 30rpx;
+        }
+        .receiverLabel{
+            min-width: 85rpx;
+            height: 60rpx;
+            padding: 0 14rpx;
+            margin: 0 35rpx;
+            line-height: 60rpx;
+            background:rgba(26,173,25,1);
+            border: 1rpx solid rgba(0,0,0,0.1);
+            border-radius:12rpx;
+            font-size: 28rpx;
+            color:rgba(255,255,255,1);
+            text-align-last: justify;
+        }
+    }
+    .createNotice {
+        width: 420rpx;
+        height: 88rpx;
+        margin-top: 32rpx;
+        line-height: 88rpx;
+        color: white;
+        line-height: 88rpx;
+        background: #ff5757;
+        border-radius: 44rpx;
+        font-weight: 500;
+
+    }
+}
+</style>
+
+<template>
+    <view class="noticeTempBox">
+        <repeat for="{{config}}" key="*this" item="item"> 
+            <view class="inputBox">
+                <view class="receiverLabel">{{item.title}}</view>
+                <input class="inputContent" 
+                    placeholder="{{item.placeholder}}"
+                    bindinput="bindInput"
+                    data-name="{{item.name}}"
+                    maxlength="12"
+                />
+            </view>
+        </repeat>
+        <button class="createNotice" @tap="clickCreate">预 览</button>
+    </view>
+</template>
+
+<script>
+const {log} = console
+import wepy from 'wepy'
+
+export default class NoticeOption extends wepy.component {
+    props = {
+
+    }
+    data = {
+        receiverVal: '',
+        dateVal: '',
+        config: [
+            {name: 'receiver', title: '接收者', placeholder: '例如：各位亲朋好友/张三/舅舅等'},
+            {name: 'date',     title: '日期',   placeholder: '例如：2020年5月13-农历四月十二'},
+            {name: 'role',     title: '主角',   placeholder: '例如：家父-张三/小女-李美丽/李四'},
+            {name: 'address',  title: '举办地', placeholder: '例如：汉中市前进路鸿业大酒店'},
+        ],
+        userInputData: {},
+    }
+    methods = {
+        bindInput(e) {
+            let configName = this.configName = e.currentTarget.dataset.name
+            this.inputVal = e.detail.value.trim()
+            this.userInputData.configName = this.inputVal
+            log(this.userInputData)
+        },
+        clickCreate() {
+            this.$emit('userInputData', this.userInputData)
+        }
+    }
+}
+</script>
