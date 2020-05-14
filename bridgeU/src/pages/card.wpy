@@ -4,7 +4,7 @@
 
 <template>
     <view class="indexPage">
-        <NoticeContent></NoticeContent>
+        <NoticeContent :noticeData.sync= 'noticeData'></NoticeContent>
     </view>
 </template>
 
@@ -13,6 +13,7 @@ import wepy from 'wepy'
 import commonMixin from '@/mixins/common'
 import api from '@/utils/api'
 import configData from '@/utils/configData'
+import urlHelper from '@/utils/urlHelper'
 import broadcast from '@/utils/broadcast'  
 import NoticeContent from '@/components/noticeContent'
 
@@ -27,13 +28,13 @@ export default class Card extends wepy.page {
 
     mixins = [commonMixin]
     data = {
-        
+        noticeData: '',
     }
 
     computed = {}
 
-    onLoad() {
-
+    onLoad(ops) {
+        this.noticeData = Object.keys(urlHelper.decodeQuery(ops)).includes('dataMark') ? urlHelper.decodeQuery(ops) : ''
     }
 
     onShow() {
@@ -49,5 +50,12 @@ export default class Card extends wepy.page {
     }
 
     //funtions
+    onShareAppMessage() {
+        return {
+            title: `${this.noticeData.receiver}台启`,
+            path: `/pages/card?userId=${10101}&noticeId=${101}`,
+            imageUrl: ''
+        }
+    }
 }
 </script>
