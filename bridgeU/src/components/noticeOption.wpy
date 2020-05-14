@@ -95,8 +95,7 @@ export default class NoticeOption extends wepy.component {
         bindInput(e) {
             let configName = this.configName = e.currentTarget.dataset.name
             this.inputVal = e.detail.value.trim()
-            this.userInputData.configName = this.inputVal
-            log(this.userInputData)
+            this.userInputData[`${configName}`] = this.inputVal
         },
         clickCreate() {
             this.$emit('userInputData', this.userInputData)
