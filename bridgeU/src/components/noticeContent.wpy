@@ -2,8 +2,9 @@
 .NoticeContnetBox {
     padding: 150rpx 32rpx 0;
     text {
-        display: block; 
+        display: inline-block; 
         margin-top: 30rpx;
+        color: #F5C170;
     }
     
     @keyframes hiddenShake{
@@ -30,49 +31,77 @@
         z-index: -1;
     }
     .title {
+        display: block;
         font-size: 40rpx;
         font-weight: bold;
         color: #F5C170;
     }
     .content {
-        margin-top: 60rpx;
+        display: block;
+        margin-top: 50rpx;
         font-weight: 500;
+        .con-date {
+            display: inline;
+            padding: 0 6rpx;
+            font-weight: 600;
+        }
+        .con-address {
+            display: inline;
+            padding: 0 6rpx;
+            font-weight: 600;
+        }
     }
     .honorific {
         font-weight: bold;
         line-height: 60rpx;
+        letter-spacing: 10rpx;
     }
     .inviter {
+        display: block;
         margin-left: 440rpx;
+        font-weight: bold;
+        font-size: 38rpx;
     }
     .date {
         margin-left: 440rpx;
+    }
+    button {
+        position: relative;
     }
 }
 </style>
 
 <template>
     <view class="NoticeContnetBox">
-        <image class="surfaceImg" src="../images/index/cardSurface.jpg"/>
+        <!-- <image class="surfaceImg" src="../images/index/cardSurface.jpg"/> -->
         <image class="bgImg" src="../images/index/cardBg.jpg" />
-        <view class="sss">
-
-        
-            <text class="title">某某先生(女士、小姐):</text>
-            <text class="content">我们定于××月××日下午×时假座××饭店××厅举行婚宴</text>
-            <text class="honorific">恭请\n光临</text>
-            <text class="inviter">张三谨邀</text>
-            <text class="date">2020-05-13</text>
-        </view>
+        <text class="title">{{noticeData.receiver}}:</text>
+        <text class="content">我们定于<text class="con-date">{{noticeData.date}}</text>假座于<text class="con-address">{{noticeData.address}}</text>举行婚宴</text>
+        <text class="honorific">恭请\n光临</text>
+        <text class="inviter">{{noticeData.role}}谨邀</text>
+        <text class="date">{{createDate}}</text>
+        <!-- <button open-type="share">点击发送给好友</button> -->
     </view>
 </template>
 
 <script>
 import wepy from 'wepy'
 
-export default class noticeContent extends wepy.component {
+export default class NoticeContent extends wepy.component {
     props = {
-        noticeData: {}
+        noticeData: {
+            type: Object,
+            default: {},
+            twoWay: true
+        }
+    }
+    data = {
+        createDate: '',
+    }
+    onLoad() {
+        let d = new Date()
+        this.createDate = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
+        this.$apply()
     }
 }
 </script>
