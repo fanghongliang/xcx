@@ -73,32 +73,42 @@
 </template>
 
 <script>
-const {log} = console
 import wepy from 'wepy'
+import commonMixin from '@/mixins/common'
 
 export default class NoticeOption extends wepy.component {
     props = {
 
     }
+    mixins = [commonMixin]
     data = {
         receiverVal: '',
         dateVal: '',
         config: [
-            {name: 'receiver', title: '接收者', placeholder: '例如：各位亲朋好友/张三/舅舅等'},
-            {name: 'date',     title: '日期',   placeholder: '例如：2020年5月13-农历四月十二'},
-            {name: 'role',     title: '主角',   placeholder: '例如：家父-张三/小女-李美丽/李四'},
-            {name: 'address',  title: '举办地', placeholder: '例如：汉中市前进路鸿业大酒店'},
+            {name: 'receiver', title: '接收者', value: '', placeholder: '例如：各位亲朋好友/张三/舅舅等'},
+            {name: 'date',     title: '日期',   value: '', placeholder: '例如：2020年5月13-农历四月十二'},
+            {name: 'role',     title: '主角',   value: '', placeholder: '例如：家父-张三/小女-李美丽/李四'},
+            {name: 'address',  title: '举办地', value: '', placeholder: '例如：汉中市前进路鸿业大酒店'},
         ],
-        userInputData: {},
     }
     methods = {
         bindInput(e) {
             let configName = this.configName = e.currentTarget.dataset.name
-            this.inputVal = e.detail.value.trim()
-            this.userInputData[`${configName}`] = this.inputVal
+            let inputVal = e.detail.value.trim()
+            this.config.map( (item, index) => {
+                item.name == configName ? item.value = inputVal : ''
+            })
         },
         clickCreate() {
-            this.$emit('userInputData', this.userInputData)
+            let userInputData = {}
+            for(let i=0; i<this.config.length; i++) {
+                if(!this.config[i].value) {
+                    this.toast(`请填写${this.config[i].title}`, 'none')
+                    return
+                }
+            }
+            this.config.map( item => userInputData[item.name] = item.value )
+            this.$emit('userInputData', userInputData)
         }
     }
 }
