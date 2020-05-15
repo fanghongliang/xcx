@@ -65,8 +65,14 @@
     .date {
         margin-left: 440rpx;
     }
-    button {
-        position: relative;
+    .btnShare {
+        position: fixed;
+        left: 150rpx;
+        bottom: 50rpx;
+        width: 450rpx;
+        height: 88rpx;
+        background: #F5C170;
+        opacity: 0.7;
     }
 }
 </style>
@@ -80,7 +86,7 @@
         <text class="honorific">恭请\n光临</text>
         <text class="inviter">{{noticeData.role}}谨邀</text>
         <text class="date">{{createDate}}</text>
-        <!-- <button open-type="share">点击发送给好友</button> -->
+        <button class="btnShare" open-type="share">点击发送给好友</button>
     </view>
 </template>
 
