@@ -19,9 +19,7 @@
                 <image src="../images/index/weddingsBg.jpg" class="weddingsImg"/>
             </view>
         </block>
-        <block wx:if="{{showNoticeCont}}">
-            <NoticeOption></NoticeOption>
-        </block>
+        <NoticeOption wx:if="{{showNoticeCont}}"></NoticeOption>
     </view>
 </template>
 
@@ -51,8 +49,6 @@ export default class Index extends wepy.page {
     data = {
         showNoticeType: true,
         showNoticeCont: false,
-        noticeId: '',
-        noticeData: '',
     }
 
     computed = {}
@@ -70,10 +66,9 @@ export default class Index extends wepy.page {
     }
 
     events = {
-        selectedNoticeId(id) {
+        selectedNoticeType(id) {
             this.showNoticeType = false
             this.showNoticeCont = true
-            this.noticeId = id
         },
         userInputData(data) {
             const that = this

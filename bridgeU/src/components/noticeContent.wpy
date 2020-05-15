@@ -80,7 +80,7 @@
 <template>
     <view class="NoticeContnetBox">
         <!-- <image class="surfaceImg" src="../images/index/cardSurface.jpg"/> -->
-        <image class="bgImg" src="../images/index/cardBg.jpg" />
+        <image class="bgImg" src="{{cardBgImg}}" />
         <text class="title">{{noticeData.receiver}}:</text>
         <text class="content">我们定于<text class="con-date">{{noticeData.date}}</text>假座于<text class="con-address">{{noticeData.address}}</text>举行婚宴</text>
         <text class="honorific">恭请\n光临</text>
@@ -103,10 +103,13 @@ export default class NoticeContent extends wepy.component {
     }
     data = {
         createDate: '',
+        cardBgImg: '',
     }
     onLoad() {
         let d = new Date()
         this.createDate = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
+        let noticeType = wepy.$instance.globalData.noticeType
+        this.cardBgImg = `../images/index/cardBg${noticeType}.jpg`
         this.$apply()
     }
 }

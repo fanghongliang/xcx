@@ -34,7 +34,7 @@
     <view class="NoticeTypeBox" catchtouchmove="preventTouchMove">
         <view class="ntb-content">
             <repeat for="{{noticeList}}" key="*this" item="item">
-                <view class="ntb-noticeItem" data-notice_id="{{item.noticeId}}" @tap="handleClick">{{item.name}}</view>
+                <view class="ntb-noticeItem" data-notice_id="{{item.noticeType}}" @tap="handleClick">{{item.name}}</view>
             </repeat>
         </view>
     </view>
@@ -46,17 +46,18 @@ export default class NoticeType extends wepy.component{
     props ={}
     data = {
         noticeList: [
-            {noticeId: 1, name: '红事'},
-            {noticeId: 2, name: '白事'},
-            {noticeId: 3, name: '寻物'},
-            {noticeId: 4, name: '其他'},
+            {noticeType: 1, name: '红事'},
+            {noticeType: 2, name: '白事'},
+            {noticeType: 3, name: '寻物'},
+            {noticeType: 4, name: '其他'},
         ]
     }
     methods = { 
         preventTouchMove() {},
         handleClick(e) {
-            const noticeId = e.currentTarget.dataset.notice_id
-            this.$emit('selectedNoticeId', noticeId) 
+            const noticeType = e.currentTarget.dataset.notice_id
+            wepy.$instance.globalData.noticeType = noticeType
+            this.$emit('selectedNoticeType', noticeType) 
         }
     }
 }
